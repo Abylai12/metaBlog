@@ -1,7 +1,9 @@
+import Link from "next/link";
+
 const menu = [
   { label: "Home", link: "/" },
-  { label: "Blog", link: "/#blog" },
-  { label: "Contact", link: "/#contact" },
+  { label: "Blog", link: "/blogs" },
+  { label: "Contact", link: "/contact" },
 ];
 
 const Menu = ({ className }) => {
@@ -9,7 +11,7 @@ const Menu = ({ className }) => {
     <ul className={`font-normal ${className} gap-10 text-base text-gray-700`}>
       {menu.map(({ label, link }, idx) => (
         <li key={idx}>
-          <a href={link}>{label}</a>
+          <Link href={link}>{label}</Link>
         </li>
       ))}
     </ul>

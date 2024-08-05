@@ -19,7 +19,7 @@ const ContactText = () => {
             1328 Oak Ridge Drive, Saint <br /> Louis, Missouri
           </p>
         </div>
-        <div className=" flex-1 py-4 border border-[#E8E8EA] rounded-xl">
+        <div className=" flex-1 p-4 border border-[#E8E8EA] rounded-xl">
           <h1 className="font-semibold text-2xl mb-3">Contact</h1>
           <p
             className="text-[

@@ -67,10 +67,10 @@ const articles = [
 ];
 const LatestPost = ({ style }) => {
   return (
-    <section className="sm:px-[350px] sm:py-8">
+    <section className=" max-w-[1220px] m-auto">
       <h1 className="font-bold text-2xl mb-8">All Blog Post</h1>
       <Links style={style} />
-      <div className="grid grid-cols-3 gap-5 ">
+      <div className="flex flex-wrap justify-center gap-5 m-auto">
         {articles.map(({ imgUrl, title, text, id }) => (
           <LatesPostCard
             key={id}
