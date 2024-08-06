@@ -1,5 +1,6 @@
 import { FaSearch } from "react-icons/fa";
 import Menu from "./menu";
+import { IoMenu } from "react-icons/io5";
 
 const Header = () => {
   return (
@@ -7,8 +8,8 @@ const Header = () => {
       <div className="w-[158px] h-9">
         <img src="./images/Logo.png" alt="img" className="" />
       </div>
-      <Menu className="flex" />
-      <div className="flex p-2 relative items-center max-w-[166px]">
+      <Menu className="sm:flex hidden" />
+      <div className="sm:flex hidden p-2 relative items-center max-w-[166px]">
         <input
           className=" bg-[#F4F4F5] rounded-md"
           type="text"
@@ -16,6 +17,9 @@ const Header = () => {
         />
         <FaSearch className="absolute right-0" />
       </div>
+      <button className="sm:hidden">
+        <IoMenu />
+      </button>
     </section>
   );
 };

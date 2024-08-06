@@ -31,7 +31,7 @@ const trendPostList = [
 ];
 const TrendingPost = () => {
   return (
-    <section className="sm:px-[350px] sm:py-8">
+    <section className="max-w-[1200px] m-auto mb-8">
       <h1 className="font-bold text-2xl mb-8">Trending</h1>
       <div className="flex gap-6 w-full">
         {trendPostList.map(({ imgurl, title, buttonTitle }, idx) => (
