@@ -1,7 +1,4 @@
 import SlayButton from "../slayCard/slayButton";
-{
-  /* <img src={imgUrl} alt="img" className=" rounded-xl w-[293px] h-[320px]" /> */
-}
 
 const TrendPostCard = ({ imgUrl, tPostText, buttonTitle }) => {
   return (

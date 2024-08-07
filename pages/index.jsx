@@ -12,12 +12,10 @@ export default function Home() {
     );
     const data = await res.json();
     setArticles(data);
-    console.log("data", data);
   };
   useEffect(() => {
     getArrticles();
-    console.log("article", articles);
-  }, []);
+  }, [count]);
   const handleClick = () => {
     setCount(count + 3);
     console.log("clicked");

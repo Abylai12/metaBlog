@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 
 const ArticleDetail = () => {
   const { query } = useRouter();
-  console.log("QR", query.id);
   const [articleDetail, setArticleDetail] = useState(null);
 
   const getArticleById = async (id) => {
