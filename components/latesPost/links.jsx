@@ -1,3 +1,6 @@
+import Link from "next/link";
+import { useState } from "react";
+
 const links = [
   { menuId: "01", label: "All", link: "/" },
   { menuId: "02", label: "Design", link: "/" },
@@ -8,18 +11,25 @@ const links = [
 ];
 
 const Links = ({ style }) => {
+  const [btn, setBtn] = useState();
+  const HandleBtn = () => {
+    console.log("clicked");
+    setBtn("text-red");
+  };
   return (
     <div className={` ${style} flex justify-between my-8`}>
       <ul className="flex gap-5 font-bold text-xs text-[#495057]">
         {links.map(({ menuId, label, link }) => (
           <li key={menuId}>
-            <a className="hover:text-[#D4A373]" href={link}>
-              {label}
-            </a>
+            <Link className="hover:text-[#D4A373]" href={link}>
+              <button onClick={HandleBtn}>{label}</button>
+            </Link>
           </li>
         ))}
       </ul>
-      <button className="hover:text-[#D4A373]">View All</button>
+      <Link href={"/blogs"} className="hover:text-[#D4A373]">
+        View All
+      </Link>
     </div>
   );
 };

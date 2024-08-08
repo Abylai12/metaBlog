@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import Date from "@/components/slayCard/date";
 
 const ArticleDetail = () => {
   const { query } = useRouter();
@@ -11,24 +12,27 @@ const ArticleDetail = () => {
     setArticleDetail(data);
   };
   useEffect(() => {
-    getArticleById(query.id);
-  }, []);
+    if (query.id) {
+      getArticleById(query.id);
+    }
+  }, [query.id]);
+  const UserContext = createContext();
 
   return (
-    <div className="p-10">
-      <div className="flex">
+    <div className="max-w-[1220px] m-auto">
+      <div className="flex gap-3">
         <img
           className="w-10 h-10 rounded-full"
-          src={articleDetail?.user.profile_image}
-          alt=""
+          src={articleDetail?.user?.profile_image}
+          alt="img"
         />
         <div className="">
-          <h2>Name</h2>
-          <p>2024</p>
+          <h2>{articleDetail?.user.name}</h2>
+          <Date date={articleDetail?.published_at.slice(0, 10)} />
         </div>
       </div>
       <div
-        className="blog-detail"
+        className="blog-detail flex flex-col gap-10 my-4"
         dangerouslySetInnerHTML={{ __html: articleDetail?.body_html }}
       ></div>
     </div>

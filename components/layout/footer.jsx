@@ -34,7 +34,7 @@ const Footer = () => {
       </div>
       <div className="flex mt-6 py-5 justify-between items-center border-t-2 border-[#DCDDDF]">
         <div className="flex gap-2">
-          <img src="./images/Union.png" alt="" />
+          <img src="/images/Logo3.svg" alt="" />
           <div>
             <h1 className="text-xl">
               Meta<span className="font-bold">Blog</span>

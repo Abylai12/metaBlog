@@ -67,7 +67,7 @@ import Links from "./links";
 // ];
 const LatestPost = ({ style, articles, handleClick }) => {
   return (
-    <section className=" max-w-[1220px] m-auto">
+    <section className="max-w-[1220px] m-auto">
       <h1 className="font-bold text-2xl mb-8">All Blog Post</h1>
       <Links style={style} />
       <div className="flex flex-wrap justify-center gap-5 m-auto">

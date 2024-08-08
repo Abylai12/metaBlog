@@ -1,7 +1,7 @@
 import LatestPost from "@/components/latesPost/latestPost";
 import SlayCard from "@/components/slayCard/slayCard";
 import TrendingPost from "@/components/trendingPost";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, createContext } from "react";
 
 export default function Home() {
   const [articles, setArticles] = useState([]);

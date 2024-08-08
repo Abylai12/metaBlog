@@ -8,7 +8,7 @@ const TextCard = () => {
       <p className="mt-4 mb-6 text-4xl font-semibold">
         Grid system for better Design User Interface
       </p>
-      <Date />
+      <Date date="August 08, 2024" />
     </div>
   );
 };
