@@ -1,28 +1,21 @@
 import LatestPost from "@/components/latesPost/latestPost";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
+import { MyContext } from "@/context/context";
 
 export default function BlogPost() {
-  const [articles, setArticles] = useState([]);
-  const [count, setCount] = useState(9);
-  const getArrticles = async () => {
-    const res = await fetch(
-      `https://dev.to/api/articles?page=1&per_page=${count}`
-    );
-    const data = await res.json();
-    setArticles(data);
-  };
+  const { searchValue, articles, handleClick, setCount } =
+    useContext(MyContext);
+
   useEffect(() => {
-    getArrticles();
-  }, [count]);
-  const handleClick = () => {
-    setCount(count + 3);
-    console.log("clicked");
-  };
+    setCount(15);
+  }, []);
+
   return (
     <section>
       <LatestPost
         style="hidden"
         articles={articles}
+        searchValue={searchValue}
         handleClick={handleClick}
       />
     </section>

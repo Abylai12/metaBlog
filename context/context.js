@@ -3,18 +3,42 @@ import React, { createContext, useState, useEffect } from "react";
 const MyContext = createContext();
 
 const MyContextProvider = ({ children }) => {
-  //   const [myState, setMyState] = useState("Hello from Context!");
+  const [searchValue, setSearchValue] = useState("");
+
+  const [count, setCount] = useState(9);
+
   const [articles, setArticles] = useState([]);
+
   const getArrticles = async () => {
-    const res = await fetch("https://dev.to/api/articles");
+    const res = await fetch(
+      `https://dev.to/api/articles?page=1&per_page=${count}`
+    );
     const data = await res.json();
     setArticles(data);
   };
+
   useEffect(() => {
     getArrticles();
-  }, []);
+  }, [count]);
+
+  const handleClick = () => {
+    setCount(count + 3);
+    console.log("clicked");
+  };
+
   return (
-    <MyContext.Provider value={{ articles }}>{children}</MyContext.Provider>
+    <MyContext.Provider
+      value={{
+        articles,
+        count,
+        setCount,
+        searchValue,
+        setSearchValue,
+        handleClick,
+      }}
+    >
+      {children}
+    </MyContext.Provider>
   );
 };
 

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import LatesPostCard from "./LatestPostCard";
 import Links from "./links";
 // const articles = [
@@ -65,21 +66,23 @@ import Links from "./links";
 //     text: "The Impact of Technology on the Workplace: How Technology is Changing",
 //   },
 // ];
-const LatestPost = ({ style, articles, handleClick }) => {
+const LatestPost = ({ searchValue, style, articles, handleClick }) => {
   return (
     <section className="max-w-[1220px] m-auto">
       <h1 className="font-bold text-2xl mb-8">All Blog Post</h1>
       <Links style={style} />
       <div className="flex flex-wrap justify-center gap-5 m-auto">
-        {articles?.map(({ cover_image, title, type_of, id }) => (
-          <LatesPostCard
-            key={id}
-            imgUrl={cover_image}
-            postText={title}
-            buttonTitle={type_of}
-            id={id}
-          />
-        ))}
+        {articles
+          .filter((el) => el?.title.toLowerCase().includes(searchValue))
+          .map(({ cover_image, title, type_of, id }) => (
+            <LatesPostCard
+              key={id}
+              imgUrl={cover_image}
+              postText={title}
+              buttonTitle={type_of}
+              id={id}
+            />
+          ))}
       </div>
       <div className="w-100 text-center my-[112px] ">
         <button

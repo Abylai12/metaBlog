@@ -5,8 +5,7 @@ import { MyContext } from "@/context/context";
 import { useContext } from "react";
 
 const Header = () => {
-  const data = useContext(MyContext);
-  console.log(data);
+  const { setSearchValue } = useContext(MyContext);
 
   return (
     <section className="flex justify-between items-center  sm:px-[350px] sm:py-8 ">
@@ -19,6 +18,7 @@ const Header = () => {
           className=" bg-[#F4F4F5] rounded-md"
           type="text"
           placeholder="  Search"
+          onChange={(e) => setSearchValue(e.target.value)}
         />
         <FaSearch className="absolute right-0" />
       </div>

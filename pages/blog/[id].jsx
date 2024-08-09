@@ -1,6 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useRouter } from "next/router";
 import Date from "@/components/slayCard/date";
+import { MyContext } from "@/context/context";
 
 const ArticleDetail = () => {
   const { query } = useRouter();
@@ -16,8 +17,6 @@ const ArticleDetail = () => {
       getArticleById(query.id);
     }
   }, [query.id]);
-  const UserContext = createContext();
-
   return (
     <div className="max-w-[1220px] m-auto">
       <div className="flex gap-3">
