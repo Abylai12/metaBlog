@@ -5,18 +5,27 @@ import { MyContext } from "@/context/context";
 const SlayCard = () => {
   const { searchValue } = useContext(MyContext);
   const [articles, setArticles] = useState([]);
-  const [count, setCount] = useState(1);
+  const [currentIndex, setCurrentIndex] = useState(0);
   const getLatestArticles = async () => {
-    const res = await fetch(
-      `https://dev.to/api/articles?latest&per_page=${count}`
-    );
+    const res = await fetch(`https://dev.to/api/articles?latest&per_page=5`);
     const data = await res.json();
     setArticles(data);
   };
   useEffect(() => {
     getLatestArticles();
-  }, [count]);
+  }, [currentIndex]);
 
+  const moveRight = () => {
+    setCurrentIndex(() =>
+      currentIndex < articles.length - 1 ? currentIndex + 1 : 0
+    );
+  };
+
+  const moveLeft = () => {
+    setCurrentIndex(() =>
+      currentIndex > 0 ? currentIndex - 1 : articles.length - 1
+    );
+  };
   return (
     <section
       className={`${!searchValue ? "" : "hidden"} max-w-[1220px] m-auto `}
@@ -24,22 +33,21 @@ const SlayCard = () => {
       <div
         className="w-full h-[600px] bg-center bg-cover gradient relative rounded-xl"
         style={{
-          backgroundImage: `url(${articles[0].cover_image})`,
+          backgroundImage: `url(${articles[currentIndex]?.cover_image})`,
         }}
       >
-        <TextCard />
+        <TextCard
+          articleTitle={articles[currentIndex]?.title}
+          publishedDate={articles[currentIndex]?.readable_publish_date}
+          articleType={articles[currentIndex]?.type_of}
+        />
       </div>
 
       <div className="text-right mt-4">
-        <button className="text-4xl mr-2">
+        <button onClick={moveLeft} className="text-4xl mr-2">
           <FaArrowAltCircleLeft />
         </button>
-        <button
-          onClick={() => {
-            setCount(count + 1);
-          }}
-          className="text-4xl "
-        >
+        <button onClick={moveRight} className="text-4xl ">
           <FaArrowAltCircleRight />
         </button>
       </div>
