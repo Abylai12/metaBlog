@@ -10,12 +10,14 @@ const TrendPostCard = ({ imgUrl, tPostText, buttonTitle }) => {
         backgroundPosition: "center",
       }}
     >
-      <div className="absolute bottom-7 left-7">
+      <div className="absolute bottom-5 left-4">
         <SlayButton
           bgColor="bg-[#4B6BFB] text-white"
           buttonTitle={buttonTitle}
         />
-        <p className="mt-4 font-semibold text-lg text-white">{tPostText}</p>
+        <p className="mt-4 h-[56px] overflow-scroll font-semibold text-lg text-white">
+          {tPostText}
+        </p>
       </div>
     </div>
   );

@@ -9,7 +9,7 @@ const MyContextProvider = ({ children }) => {
 
   const [articles, setArticles] = useState([]);
 
-  const getArrticles = async () => {
+  const getArticles = async () => {
     const res = await fetch(
       `https://dev.to/api/articles?page=1&per_page=${count}`
     );
@@ -18,12 +18,11 @@ const MyContextProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getArrticles();
+    getArticles();
   }, [count]);
 
   const handleClick = () => {
     setCount(count + 3);
-    console.log("clicked");
   };
 
   return (

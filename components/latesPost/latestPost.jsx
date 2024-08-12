@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useEffect, useContext } from "react";
 import LatesPostCard from "./LatestPostCard";
 import Links from "./links";
+import { MyContext } from "@/context/context";
 // const articles = [
 //   {
 //     id: "01",
@@ -66,7 +67,12 @@ import Links from "./links";
 //     text: "The Impact of Technology on the Workplace: How Technology is Changing",
 //   },
 // ];
-const LatestPost = ({ searchValue, style, articles, handleClick }) => {
+const LatestPost = ({ style }) => {
+  const { searchValue, articles, handleClick, setCount } =
+    useContext(MyContext);
+  useEffect(() => {
+    setCount(9);
+  }, []);
   return (
     <section className="max-w-[1220px] m-auto">
       <h1 className="font-bold text-2xl mb-8">All Blog Post</h1>
@@ -74,12 +80,13 @@ const LatestPost = ({ searchValue, style, articles, handleClick }) => {
       <div className="flex flex-wrap justify-center gap-5 m-auto">
         {articles
           .filter((el) => el?.title.toLowerCase().includes(searchValue))
-          .map(({ cover_image, title, type_of, id }) => (
+          .map(({ type_of, title, cover_image, readable_publish_date, id }) => (
             <LatesPostCard
               key={id}
               imgUrl={cover_image}
               postText={title}
               buttonTitle={type_of}
+              date={readable_publish_date}
               id={id}
             />
           ))}
