@@ -5,7 +5,7 @@ import Link from "next/link";
 const LatesPostCard = ({ imgUrl, postText, buttonTitle, id, date }) => {
   return (
     <Link href={"/blog/" + id}>
-      <div className="p-4 border rounded-xl border-[#E8E8EA] w-[392px] h-[345px] flex flex-col justify-between">
+      <div className="hover:scale-110 transition-transform p-4 border rounded-xl border-[#E8E8EA] w-[392px] h-[345px] flex flex-col justify-between">
         <div className="rounded-md">
           <img
             src={imgUrl ? imgUrl : "./images/Union.png"}
