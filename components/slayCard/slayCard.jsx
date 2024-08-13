@@ -4,7 +4,6 @@ import { useContext, useState, useEffect } from "react";
 import { MyContext } from "@/context/context";
 import Link from "next/link";
 import { toast } from "react-toastify";
-import Loader from "../loader/loader";
 import Skeleton from "../loader/skeleton";
 const SlayCard = () => {
   const { searchValue } = useContext(MyContext);
