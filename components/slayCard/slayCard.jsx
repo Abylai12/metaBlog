@@ -24,12 +24,12 @@ const SlayCard = () => {
   };
   useEffect(() => {
     getLatestArticles();
-  }, [currentIndex]);
+  }, []);
 
   const moveRight = () => {
-    setCurrentIndex(() =>
-      currentIndex < articles.length - 1 ? currentIndex + 1 : 0
-    );
+    // setCurrentIndex(() =>
+    //   currentIndex < articles.length - 1 ? currentIndex + 1 : 0
+    // );
   };
 
   const moveLeft = () => {
@@ -41,24 +41,30 @@ const SlayCard = () => {
     <section
       className={`${!searchValue ? "" : "hidden"} max-w-[1220px] m-auto `}
     >
-      <Link href={"/blog/" + articles[currentIndex]?.id}>
-        {isLoading ? (
-          <Skeleton />
-        ) : (
-          <div
-            className="w-full h-[600px] bg-center bg-cover gradient relative rounded-xl"
-            style={{
-              backgroundImage: `url(${articles[currentIndex]?.cover_image})`,
-            }}
-          >
-            <TextCard
-              articleTitle={articles[currentIndex]?.title}
-              publishedDate={articles[currentIndex]?.readable_publish_date}
-              articleType={articles[currentIndex]?.type_of}
-            />
-          </div>
+      <div className="flex overflow-scroll p-5">
+        {articles.map(
+          ({ id, cover_image, title, readable_publish_date, type_of }) => (
+            <Link href={"/blog/" + id} key={id}>
+              <div
+                className="w-[1220px] h-[600px] bg-center bg-cover gradient relative rounded-xl"
+                style={{
+                  backgroundImage: `url(${
+                    cover_image ? cover_image : "./images/Union.png"
+                  } )`,
+                }}
+              >
+                <TextCard
+                  articleTitle={title}
+                  publishedDate={readable_publish_date}
+                  articleType={type_of}
+                />
+              </div>
+              {isLoading && <Skeleton />}
+            </Link>
+          )
         )}
-      </Link>
+      </div>
+
       <div className="text-right mt-4">
         <button onClick={moveLeft} className="text-4xl mr-2">
           <FaArrowAltCircleLeft />

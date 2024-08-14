@@ -6,6 +6,7 @@ const MyContext = createContext();
 const MyContextProvider = ({ children }) => {
   const [searchValue, setSearchValue] = useState("");
   const [count, setCount] = useState(9);
+  const [page, setPage] = useState(1);
   const [articles, setArticles] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const getArticles = async () => {
@@ -16,6 +17,7 @@ const MyContextProvider = ({ children }) => {
       );
       const data = await res.json();
       setArticles(data);
+      // setArticles((prevArticles) => [...prevArticles, ...data]);
       setIsLoading(false);
     } catch (error) {
       console.log("er", error);

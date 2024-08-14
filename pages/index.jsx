@@ -1,5 +1,4 @@
 import LatestPost from "@/components/latesPost/latestPost";
-import Skeleton from "@/components/loader/skeleton";
 
 import SlayCard from "@/components/slayCard/slayCard";
 import TrendingPost from "@/components/trendingPost";

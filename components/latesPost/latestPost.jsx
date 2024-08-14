@@ -14,24 +14,19 @@ const LatestPost = ({ style }) => {
       <h1 className="font-bold text-2xl mb-8">All Blog Post</h1>
       <Links style={style} />
       <div className="flex flex-wrap justify-center gap-6 m-auto">
-        {isLoading ? (
-          <Loader />
-        ) : (
-          articles
-            .filter((el) => el?.title.toLowerCase().includes(searchValue))
-            .map(
-              ({ type_of, title, cover_image, readable_publish_date, id }) => (
-                <LatesPostCard
-                  key={id}
-                  imgUrl={cover_image}
-                  postText={title}
-                  buttonTitle={type_of}
-                  date={readable_publish_date}
-                  id={id}
-                />
-              )
-            )
-        )}
+        {articles
+          .filter((el) => el?.title.toLowerCase().includes(searchValue))
+          .map(({ type_of, title, cover_image, readable_publish_date, id }) => (
+            <LatesPostCard
+              key={id}
+              imgUrl={cover_image}
+              postText={title}
+              buttonTitle={type_of}
+              date={readable_publish_date}
+              id={id}
+            />
+          ))}
+        {isLoading && <Loader />}
       </div>
       <div className="w-100 text-center my-[112px] ">
         <button

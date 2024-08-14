@@ -27,21 +27,18 @@ const TrendingPost = () => {
     <section className="max-w-[1200px] m-auto mb-8">
       <h1 className="font-bold text-2xl mb-8">Trending</h1>
       <div className="flex gap-6 w-full">
-        {isLoading ? (
-          <Loader />
-        ) : (
-          trendArticle
-            ?.filter((el) => el?.title.toLowerCase().includes(searchValue))
-            .map(({ cover_image, title, type_of, id }, idx) => (
-              <TrendPostCard
-                key={idx}
-                imgUrl={cover_image}
-                tPostText={title}
-                buttonTitle={type_of}
-                id={id}
-              />
-            ))
-        )}
+        {trendArticle
+          ?.filter((el) => el?.title.toLowerCase().includes(searchValue))
+          .map(({ cover_image, title, type_of, id }, idx) => (
+            <TrendPostCard
+              key={idx}
+              imgUrl={cover_image}
+              tPostText={title}
+              buttonTitle={type_of}
+              id={id}
+            />
+          ))}
+        {isLoading && <Loader />}
       </div>
     </section>
   );
