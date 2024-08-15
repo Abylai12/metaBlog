@@ -3,12 +3,14 @@ import LatesPostCard from "./LatestPostCard";
 import Links from "./links";
 import { MyContext } from "@/context/context";
 import Loader from "../loader/loader";
+
 const LatestPost = ({ style }) => {
   const { searchValue, isLoading, articles, handleClick, setCount } =
     useContext(MyContext);
   useEffect(() => {
     setCount(9);
   }, []);
+
   return (
     <section className="max-w-[1250px] m-auto">
       <h1 className="font-bold text-2xl mb-8">All Blog Post</h1>

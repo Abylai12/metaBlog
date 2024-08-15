@@ -27,9 +27,9 @@ const SlayCard = () => {
   }, []);
 
   const moveRight = () => {
-    // setCurrentIndex(() =>
-    //   currentIndex < articles.length - 1 ? currentIndex + 1 : 0
-    // );
+    setCurrentIndex(() =>
+      currentIndex < articles.length - 1 ? currentIndex + 1 : 0
+    );
   };
 
   const moveLeft = () => {
@@ -41,28 +41,36 @@ const SlayCard = () => {
     <section
       className={`${!searchValue ? "" : "hidden"} max-w-[1220px] m-auto `}
     >
-      <div className="flex overflow-scroll p-5">
-        {articles.map(
-          ({ id, cover_image, title, readable_publish_date, type_of }) => (
-            <Link href={"/blog/" + id} key={id}>
+      <div className="w-[1220px] h-[600px] overflow-hidden ">
+        <div
+          className=" flex h-full w-full transition-all ease-out duration-150"
+          style={{ transform: `translateX(-${currentIndex * 100}%)` }}
+        >
+          {articles.map(
+            (
+              { id, cover_image, title, readable_publish_date, type_of },
+              idx
+            ) => (
               <div
-                className="w-[1220px] h-[600px] bg-center bg-cover gradient relative rounded-xl"
+                className=" h-full min-w-full bg-center bg-cover gradient relative rounded-xl"
                 style={{
                   backgroundImage: `url(${
                     cover_image ? cover_image : "./images/Union.png"
                   } )`,
                 }}
               >
-                <TextCard
-                  articleTitle={title}
-                  publishedDate={readable_publish_date}
-                  articleType={type_of}
-                />
+                <Link href={"/blog/" + id} key={id}>
+                  <TextCard
+                    articleTitle={title}
+                    publishedDate={readable_publish_date}
+                    articleType={type_of}
+                  />
+                </Link>
               </div>
-              {isLoading && <Skeleton />}
-            </Link>
-          )
-        )}
+            )
+          )}
+          {isLoading && <Skeleton />}
+        </div>
       </div>
 
       <div className="text-right mt-4">
@@ -77,3 +85,6 @@ const SlayCard = () => {
   );
 };
 export default SlayCard;
+
+{
+}
