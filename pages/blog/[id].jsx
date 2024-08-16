@@ -3,20 +3,20 @@ import { useRouter } from "next/router";
 import Date from "@/components/slayCard/date";
 import { MyContext } from "@/context/context";
 
-const ArticleDetail = () => {
-  const { query } = useRouter();
-  const [articleDetail, setArticleDetail] = useState(null);
+const ArticleDetail = ({ articleDetail }) => {
+  // const { query } = useRouter();
+  // const [articleDetail, setArticleDetail] = useState(null);
 
-  const getArticleById = async (id) => {
-    const res = await fetch(`https://dev.to/api/articles/${id}`);
-    const data = await res.json();
-    setArticleDetail(data);
-  };
-  useEffect(() => {
-    if (query.id) {
-      getArticleById(query.id);
-    }
-  }, [query.id]);
+  // const getArticleById = async (id) => {
+  //   const res = await fetch(`https://dev.to/api/articles/${id}`);
+  //   const data = await res.json();
+  //   setArticleDetail(data);
+  // };
+  // useEffect(() => {
+  //   if (query.id) {
+  //     getArticleById(query.id);
+  //   }
+  // }, [query.id]);
   return (
     <div className="max-w-[1220px] m-auto">
       <div className="flex gap-3">
@@ -37,5 +37,10 @@ const ArticleDetail = () => {
     </div>
   );
 };
-
+export async function getServerSideProps(context) {
+  const res = await fetch(`https://dev.to/api/articles/${context.query.id}`);
+  const articleDetail = await res.json();
+  console.log("articleDetail", articleDetail);
+  return { props: { articleDetail } };
+}
 export default ArticleDetail;

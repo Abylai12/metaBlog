@@ -47,19 +47,17 @@ const SlayCard = () => {
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}
         >
           {articles.map(
-            (
-              { id, cover_image, title, readable_publish_date, type_of },
-              idx
-            ) => (
+            ({ id, cover_image, title, readable_publish_date, type_of }) => (
               <div
                 className=" h-full min-w-full bg-center bg-cover gradient relative rounded-xl"
+                key={id}
                 style={{
                   backgroundImage: `url(${
                     cover_image ? cover_image : "./images/Union.png"
                   } )`,
                 }}
               >
-                <Link href={"/blog/" + id} key={id}>
+                <Link href={"/blog/" + id}>
                   <TextCard
                     articleTitle={title}
                     publishedDate={readable_publish_date}

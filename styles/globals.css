@@ -6,3 +6,8 @@
   background-color: rgba(20, 22, 36, 0.4);
   background-blend-mode: darken;
 }
+
+.embla__slide {
+  flex: 0 0 100%;
+  min-width: 0;
+}
