@@ -166,3 +166,6 @@ const SlayCard = () => {
   );
 };
 export default SlayCard;
+
+{
+}

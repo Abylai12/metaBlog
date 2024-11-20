@@ -71,9 +71,9 @@ const TrendingPost = () => {
       toast.warning("Интернет холболтоо шалгана уу");
     }
   };
-  useEffect(() => {
-    trendArticles();
-  }, []);
+  // useEffect(() => {
+  //   trendArticles();
+  // }, []);
   return (
     <section className="max-w-[1200px] embla m-auto mb-8" ref={emblaRef}>
       <h1 className="font-bold text-2xl mb-8">Trending</h1>

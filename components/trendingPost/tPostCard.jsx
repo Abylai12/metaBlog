@@ -3,11 +3,11 @@ import SlayButton from "../slayCard/slayButton";
 
 const TrendPostCard = ({ imgUrl, tPostText, buttonTitle, id }) => {
   return (
-    <Link href={"/blog/" + id}>
+    <Link className="" href={"/blog/" + id}>
       <div
-        className="hover:scale-110 transition-transform relative rounded-xl w-[293px] h-[320px] bg-blend-darken gradient"
+        className="embla__slide hover:scale-110 transition-transform relative rounded-xl w-[293px] h-[320px] bg-blend-darken gradient"
         style={{
-          backgroundImage: `url(${imgUrl})`,
+          backgroundImage: `url(${imgUrl ? imgUrl : "./images/Union.png"})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
         }}
